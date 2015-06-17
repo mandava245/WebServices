@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://service.webservices.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://service.webservices.com" xmlns:intf="http://service.webservices.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://service.webservices.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getCustomerName">
+    <complexType>
+     <sequence>
+      <element name="cid" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCustomerNameResponse">
+    <complexType>
+     <sequence>
+      <element name="getCustomerNameReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getCustomerNameResponse">
+
+      <wsdl:part element="impl:getCustomerNameResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCustomerNameRequest">
+
+      <wsdl:part element="impl:getCustomerName" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="CustomerServiceImpl">
+
+      <wsdl:operation name="getCustomerName">
+
+         <wsdl:input message="impl:getCustomerNameRequest" name="getCustomerNameRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getCustomerNameResponse" name="getCustomerNameResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CustomerServiceImplSoapBinding" type="impl:CustomerServiceImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getCustomerName">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCustomerNameRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCustomerNameResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CustomerServiceImplService">
+
+      <wsdl:port binding="impl:CustomerServiceImplSoapBinding" name="CustomerServiceImpl">
+
+         <wsdlsoap:address location="http://localhost:8282/FirstWebServiceApplicationJAX-RPC/services/CustomerServiceImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
